@@ -1,0 +1,531 @@
+
+
+// Reactive elements
+
+.helm-docs-wrapper {
+  .open-nav, .side-nav {
+    margin-top: 100px;
+    position: absolute;
+    top: -86px;
+
+    // Hit the point, now we're fixed
+    .docs-sidebar-scroll & {
+      position: fixed;
+      top: 61px;
+      margin-top: 0;
+      @include transition(top ease 0.5s, margin-left ease 0.5s);
+    }
+      
+
+    // // ... with admin menus 
+    // .navbar-horizontal.docs-sidebar-scroll &,
+    // .admin-menu.docs-sidebar-scroll & {
+    //   top: 72px;
+    // }
+    
+    // .navbar-tray-open.docs-sidebar-scroll & {
+    //   top: 152px;
+    // }
+  }
+}
+
+
+// Offcanvas navigation for the docs
+// ----------------------------------
+
+$open-nav-dim: 30px;
+
+// Open side nav
+.open-nav {
+  display: block;
+  //position: fixed;
+  left: $grid-gutter-width/2;
+  font-size: 14px;
+  width: $open-nav-dim;
+  min-height: 128px;
+  min-width: 0;
+  cursor: pointer;
+  //top: 126px;
+  @include transition(all ease .2s);
+
+  i {
+    display: block!important;
+    margin: 0 0 10px;
+    font-size: 23px;
+    width: $open-nav-dim;
+    height: $open-nav-dim;
+    text-align: center;
+    line-height: $open-nav-dim!important;
+    position: relative;
+    @include transform(rotate(0deg));
+    @include transition(all ease .2s);
+    
+    .show-nav & {
+      @include transform(rotate(180deg));
+    }
+  }
+
+
+  span {
+    display: block;
+    @include transform(rotate(90deg));
+  }
+}
+
+// Navigation for the docs
+// ----------------------------------
+
+.side-nav {
+  overflow: auto;
+  max-height: 80%;
+  padding: 0!important;
+  @include webkit-scrollbar($brand-primary, $gray-light, 4px, 4px, 0px, 2px);
+
+  li {
+    display: block;
+    max-width: 100%;
+  }
+
+  .heading a {
+    text-transform: none!important;
+  }
+
+  .heading > a {
+    font-size: 1.1em!important;
+  }
+
+  // .heading.active {
+  //   & > a {
+  //     background: $side-nav-link-bg-hover;
+  //     color: $side-nav-link-color-hover;
+  //   }
+  // }
+
+  .child-menu {
+    display: none;
+  }
+
+  .active-section {
+
+    & > a, a.active {
+      font-weight: normal;
+      font-size: 1.05em;
+    }
+
+
+    & > ul.child-menu {
+      display: block;
+    }
+  }
+}
+
+
+
+// Docs main section
+// ----------------------------------
+
+.helm-docs-wrapper {
+  padding-bottom: 400px;
+}
+
+.helm-docs {
+  position: relative;
+
+
+  .node {
+    margin-bottom: 20px;
+
+    .body * {
+      max-width: 100%;
+    }
+  }
+
+  .node + .node.depth-2 {
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid $gray-light;
+  }
+
+  // .node-title {
+  //   .admin-menu & {
+  //     padding-top: 20px;
+  //   }
+  // }
+
+  // Force static for the side menu  
+  .col-left {
+    maring-top: 14px;
+    position: static;
+  }
+}
+
+
+// *
+// * Media Queries
+// *
+// ******************************************************
+
+@include respond($xs-only) {
+
+  // Sticky header for the docs
+  // ----------------------------------
+
+  .page {
+
+    // .l-main  {
+    //   padding-top: $menu-height;
+    // }
+
+    $top-offset: 100px;
+
+    // Backdrop
+    .mainHeader:before {
+      height: 104px;
+    }
+
+    .logoPosition {
+      margin-top: $top-offset + 28px;
+    }
+
+    .toggle-topbar {
+      margin-top: $top-offset + 10px;
+    }
+
+    .login-wrap {
+      margin-top: $top-offset + 44px;
+    }
+
+    .toggle-topbar,
+    .login-wrap {
+      right: $grid-gutter-width;
+    }
+  }
+
+
+  // we have soidebar first (docs section)
+  .helm-docs-wrapper {
+    .helm-docs {
+      margin-left: -100%;
+      max-width: none;
+      width: 200%;
+    }
+
+    .side-nav {
+      width: 45%;
+    }
+
+    &.show-nav { 
+      .helm-docs {
+        margin-left: 0%;
+      }
+
+      .side-nav {
+        //left: 70px;
+        margin-left: 0;
+        
+        .docs-sidebar-scroll & {
+          left: 60px;
+          margin-left: 0;
+          width: 80%;
+        }
+      }
+    }
+  }
+}
+
+@include respond($sm-and-down) {
+
+
+  // Sticky header for the docs
+  // ----------------------------------
+
+  // .page {
+
+
+  //   $top-offset: 100px;
+
+  //   // Backdrop
+  //   .mainHeader:before {
+  //     background: $white;
+  //     content: '';
+  //     width: 100%;
+  //     left: 0;
+  //     top: -$top-offset;
+  //     margin-top: $top-offset;
+  //   }
+
+  //   .login-wrap {
+
+  //     & > a {
+  //       @include transition(width ease 0.5s);
+  //     }
+  //   }
+
+
+  //   .mainHeader:before,
+  //   .logoPosition,
+  //   .toggle-topbar,
+  //   .login-wrap {
+  //     @include transition(top ease 0.5s, width ease 0.5s, height ease 0.5s, right ease 0.5s);
+  //     position: absolute;
+  //     z-index: 400;
+  //     top: -$top-offset
+  //   }
+
+  //   .docs-sidebar-scroll & {
+
+  //     // Backdrop
+  //     .mainHeader:before {
+  //       margin-top: 0;
+  //       height: 65px;
+  //     }
+
+  //     .logoPosition {
+  //       margin-top: 13px;
+  //       width: 80px;
+  //     }
+
+  //     .toggle-topbar {
+  //       margin-top: 18px;
+  //       right: 85px;
+  //     }
+
+  //     .login-wrap {
+  //       margin-top: 9px;
+
+  //       & > a {
+  //         width: 65px!important;
+  //       }
+  //     }
+
+  //     .mainHeader:before,
+  //     .logoPosition,
+  //     .toggle-topbar,
+  //     .login-wrap {
+  //       position: fixed;
+  //       top: 0;
+  //       z-index: 1000;
+  //     }
+  //   }
+  // }
+
+  // we have soidebar first (docs section)
+  .helm-docs-wrapper {
+    position: relative;
+    padding-left: 50px;
+
+    .ng-main {
+      overflow: hidden;
+      min-width: 100%;
+      position: relative;
+    }
+
+    .helm-docs {
+      @include transition(all ease 0.5s);
+    }
+
+    .child-menu {
+      display: block!important;
+    }
+
+    .side-nav {
+      max-height: 66%;
+      @include background(
+        linear-gradient(white 30%, rgba(255,255,255,0)),
+        linear-gradient(rgba(255,255,255,0), white 70%) 0 100%,
+        radial-gradient(50% 0, farthest-side, rgba(0,0,0,.2), rgba(0,0,0,0)),
+        radial-gradient(50% 100%,farthest-side, rgba(0,0,0,.2), rgba(0,0,0,0)) 0 100%);
+
+      @include background(
+        linear-gradient(white 30%, rgba(255,255,255,0)),
+        linear-gradient(rgba(255,255,255,0), white 70%) 0 100%,
+        radial-gradient(farthest-side at 50% 0, rgba(0,0,0,.2), rgba(0,0,0,0)),
+        radial-gradient(farthest-side at 50% 100%, rgba(0,0,0,.2), rgba(0,0,0,0)) 0 100%);
+
+      background-repeat: no-repeat;
+      background-color: white;
+      background-size: 100% 40px, 100% 40px, 100% 14px, 100% 14px;
+      background-attachment: local, local, scroll, scroll;
+
+      &, .docs-sidebar-scroll & {
+        margin-left: -100%;
+      }
+    }
+  }
+
+}
+
+@include respond($sm-only) {
+
+  // Sticky header for the docs
+  // ----------------------------------
+
+  // $top-offset: 100px;
+
+  // .page {
+  //     // Backdrop
+  //   .mainHeader:before {
+  //     height: 85px;
+  //   }
+
+  //   .logoPosition {
+  //     margin-top: $top-offset + 16px;
+  //   }
+
+  //   .toggle-topbar {
+  //     margin-top: $top-offset + 38px;
+  //     right: 150px;
+  //   }
+
+  //   .login-wrap {
+  //     margin-top: $top-offset + 28px;
+  //     margin-right: 0;
+  //   }
+
+  //   .login-wrap {
+  //     right: $grid-gutter-width;
+  //   }
+  // }
+
+
+  // we have soidebar first (docs section)
+  .helm-docs-wrapper {
+    .helm-docs {
+      margin-left: 0;
+    }
+
+    &.show-nav { 
+      .helm-docs {
+        margin-left: 250px;
+      }
+
+
+      .side-nav {
+        left: 70px;
+        margin-left: -(230px + 70px);
+        
+        .docs-sidebar-scroll & {
+          left: (230px + 70px) + 70px;
+        }
+      }
+    }
+
+    .col-right {
+      width: 100%;
+      padding-left: 8%;
+      padding-right: 12%;
+    }
+  }
+
+}
+
+@include respond($sm-up) {
+  .helm-docs-wrapper {
+    .side-nav {
+      width: 260px;
+    }
+  }
+}
+
+@include respond($md-up) {
+
+  // Sticky header for the docs
+  // ----------------------------------
+
+  // $top-offset: 100px;
+  // $menu-height: 85px;
+
+  // .page {
+
+  //   .logoPosition {
+  //     @include transition(top ease 0.5s, width ease 0.5s);
+  //   }
+
+  //   .mainHeader .block-menu-block {
+  //     @include transition(margin-top ease 0.5s);
+  //   }
+
+  //   .login-wrap {
+  //     @include transition(margin-top ease 0.5s);
+  //   }
+
+  //   .menuDiv {
+  //     background: $white;
+  //     left: 0;
+  //     margin-top: $top-offset;
+  //     position: absolute;
+  //     @include transition(top ease 0.5s, height ease 0.5s);
+  //     left: 0;
+  //     top: -$top-offset;
+  //     width: 100%;
+  //     z-index: 400;
+  //     height: 85px;
+  //   }
+
+  //   .l-main {
+  //     padding-top: $menu-height;
+  //   }
+
+
+  //   .docs-sidebar-scroll & {
+
+  //     .logoPosition { 
+  //       top: 0px;
+  //       width: 115px;
+  //     }
+
+
+  //     .mainHeader .block-menu-block {
+  //       margin-top: 14px;
+  //     }
+
+  //     .login-wrap {
+  //       margin-top: 0;
+  //     }
+      
+  //     .menuDiv {
+  //       height: 55px;
+  //       top: 0px;
+  //       margin-top: 0;
+  //       padding-top: 10px;
+  //       position: fixed;
+  //       overflow: hidden;
+  //       z-index: 1000;
+  //     }
+  //   }
+  // }
+
+  // Docs
+  // ----------------------------------
+
+  .open-nav {
+    display: none;
+  }
+  
+  .helm-docs {
+    // add min height for layout
+    .col-left {
+      min-height: 10px;
+    }
+  }
+
+  .helm-docs-wrapper {
+    .side-nav {
+      margin-left: -15px!important;
+      width: 230px;
+
+      // .navbar-horizontal & {
+      //   top: 120px;
+      // }
+      
+      // .navbar-tray-open & {
+      //   top: 160px;
+      // }
+
+      // Hit the point, now we're fixed
+      .docs-sidebar-scroll & {
+        top: 72px;
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+
+
+//***********************************
+// Webkit scroll style
+//***********************************
+
+@mixin webkit-scrollbar($color1, $color2: darken($color2, 10%), $width: emCalc(10), $height: emCalc(10), $radius-outer: 0, $radius-inner: 0) {
+  
+  &::-webkit-scrollbar {
+    background-color: $color2;
+
+    &:vertical {
+      width: $width;
+    }
+
+    &:horizontal {
+      height: $height;
+    }
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: $radius-inner;
+    background-color: $color1;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: $radius-outer;
+    background-color: $color2;
+  }
+}
