@@ -1,5 +1,0 @@
-name = Playfab Documentation
-description = Simple docs section with Angular.js
-core = 7.x
-package = Playfab
-dependencies[] = restws

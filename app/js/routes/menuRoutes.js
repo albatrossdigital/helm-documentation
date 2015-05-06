@@ -152,7 +152,7 @@ angular.module('app.menu', [
 
             // check if we're NOT expanded and navigating to first item.
             if(  nodes.length > 1
-              && !parseInt(nodes[0].expanded) 
+              //&& !parseInt(nodes[0].expanded) 
               && $state.params 
               && (  !$state.params.childmlid
                  || $state.params.childmlid && $state.params.mlid == $state.params.childmlid) )
@@ -202,6 +202,7 @@ angular.module('app.menu', [
             $scope.windowHeight = $window.innerHeight - (30 + 55);
             
             // Check if we're serving all combined
+            nodes[0].expanded=1;
             if(parseInt(nodes[0].expanded)) {
               $scope.nodes = nodes;
             }
