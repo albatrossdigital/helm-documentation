@@ -26,6 +26,22 @@ angular.module('drupalService', ['ngResource'])
   }])
 
 
+  .factory('Path', ['$resource', '$rootScope', function ($resource, $rootScope) {
+    return $resource($rootScope.apiUrl + '/:path',
+      { 'path': '@path' },
+      {
+        get: {
+          method:'GET',
+          transformRequest: function(data, headersGetter) {
+            headersGetter()['Accept'] = 'application/json';
+          },
+          cache: true
+        }
+      }
+    );
+  }])
+
+
   .factory('MenuLink', ['$resource', '$rootScope', function ($resource, $rootScope) {
     return $resource($rootScope.apiUrl + '/menu_link.json', 
       {

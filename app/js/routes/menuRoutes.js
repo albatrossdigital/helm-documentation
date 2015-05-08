@@ -179,8 +179,8 @@ angular.module('app.menu', [
                 childmlid = _.filter(nodes, function(item) {
                   return item.node && item.node.body && item.node.body.value;
                 })[0].mlid;
-                stateGo = true
-;              }
+                stateGo = true;
+              }
             }
             // Change the active section
             $rootScope.changeSection($state.params.mlid);
@@ -227,6 +227,41 @@ angular.module('app.menu', [
 
             $scope.trustedBody = function(node) {
               return $sce.trustAsHtml(node.node.body.value);
+            }
+          }
+        })
+
+
+        // This is just a placeholder for deep links
+        .state("node", {
+          url: '/*path',
+          templateUrl: 'views/menu/section.html',
+          resolve: {
+            links: function($stateParams, $filter, MenuLink) {
+              return MenuLink.query().$promise.then(function(data) {
+                return data;
+              })
+            },
+            node: function($stateParams, $filter, Path) {
+              // Grab the node data with one request
+              return Path.get({path: $stateParams.path}).$promise.then(function(data) {
+                console.log(data);
+                return data;
+              });
+            }
+          },
+          controller: function($scope, $sce, $rootScope, $filter, $state, $window, node, links) {
+
+            console.log(node);
+            console.log(links);
+
+            // @todo: make this work for more than 2-deep
+            var menuItem = $filter('filter')(links.list, { nid: node.nid }, true)[0];
+            if (menuItem.plid == 0) {
+              $state.go('menu.section', {mlid: menuItem.mlid});
+            }
+            else {
+              $state.go('menu.section.child', {mlid: menuItem.plid, childmlid: menuItem.mlid});
             }
           }
         });
