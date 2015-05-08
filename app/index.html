@@ -11,10 +11,8 @@
     <meta name="description" ng-attr-content="{{metaDescription()}}" />
     <meta name="keywords" ng-attr-content="{{metaKeywords()}}" />
     <title ng-bind="pageTitle();">FILLME!</title>
+    <link rel="stylesheet" href="http://helmcivic.com/css/app.min.css">
     <!-- build:css css/libraries.min.css -->
-    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css">
-    <link rel="stylesheet" href="bower_components/afkl-lazy-image/release/lazy-image-style.css">
-    <link rel="stylesheet" href="bower_components/foundation/css/foundation.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css css/app.min.css -->
@@ -41,8 +39,17 @@
         Drupal.settings.helm_documentation.page_path = '/';
     </script>
   </head>
-  <body style="padding-top: 100px;">
+  <body>
 
+
+<div class="container header">
+  <a href="/" class="logo"></a>
+  <h1><a href="/">Helm Civic</a></h1>
+</div>
+
+<div class="container header">
+  <h2>Documentation</h2>
+</div>
 
 
 <div class="helm-docs-wrapper">
