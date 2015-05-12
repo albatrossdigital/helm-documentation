@@ -7,9 +7,9 @@
      {{child.link_title}}
    </a>
 
-  <ul ng-if="child.has_children" class="child-menu">
+  <ul ng-if="child.has_children" class="child-menu nav">
     <li ng-repeat="child in links | filter: { plid: child.mlid }" 
-        ng-class="{'active-section': activeSections(child)}"
+        ng-class="{'active': activeSections(child)}"
         ng-include="'tree_renderer.html'">
     </li>
   </ul>
@@ -17,23 +17,23 @@
 
 <div class="row helm-docs">
 
-  <div id="docs-side-nav" class="col-left small-6 medium-3 columns" scroll-spy>
-    <ul class="side-nav">
+  <div id="docs-side-nav" class="col-left" scroll-spy>
+    <ul class="nav side-nav">
       
       <li ng-repeat="item in links | filter: { depth: 1 }" ng-class="activeLink == item.mlid ? 'active' : ''" class="heading">
         <a href menu-click ng-click="changeSection(item.mlid, true)">
            {{item.link_title}}
         </a>
 
-        <ul ng-if="activeLink == item.mlid" class="children-menu"><li ng-repeat="child in links | filter: { plid: activeLink }" 
-            ng-class="{'active-section': activeSections(child)}"
+        <ul ng-if="activeLink == item.mlid" class="children-menu nav"><li ng-repeat="child in links | filter: { plid: activeLink }" 
+            ng-class="{'active': activeSections(child)}"
             ng-include="'tree_renderer.html'"
         ></li></ul>
       </li>
     </ul>
   </div>
 
-  <div class="col-right small-6 medium-9 columns">
+  <div class="col-right col-sm-9 pull-right columns">
 
     <div ui-view></div>
 

@@ -1,5 +1,17 @@
 
 
+#header {
+  .logo {
+    margin-top: 3px;
+  }
+
+  h1 {
+    margin-top: 10px;
+  }
+}
+
+
+
 // Reactive elements
 
 .helm-docs-wrapper {
@@ -11,7 +23,7 @@
     // Hit the point, now we're fixed
     .docs-sidebar-scroll & {
       position: fixed;
-      top: 61px;
+      top: 40px;
       margin-top: 0;
       @include transition(top ease 0.5s, margin-left ease 0.5s);
     }
@@ -47,6 +59,13 @@ $open-nav-dim: 30px;
   cursor: pointer;
   //top: 126px;
   @include transition(all ease .2s);
+
+
+  &, * {
+    &:hover {
+      text-decoration: none;
+    }
+  }
 
   i {
     display: block!important;
@@ -88,11 +107,16 @@ $open-nav-dim: 30px;
 
   .heading a {
     text-transform: none!important;
+    font-size: 0.8em;
   }
 
-  .heading > a {
-    font-size: 1.1em!important;
+  li.active > a {
+    font-weight: bold;
   }
+
+  // .heading > a {
+  //   font-size: 0.9em!important;
+  // }
 
   // .heading.active {
   //   & > a {
@@ -108,8 +132,8 @@ $open-nav-dim: 30px;
   .active-section {
 
     & > a, a.active {
-      font-weight: normal;
-      font-size: 1.05em;
+      //font-weight: normal;
+      // font-size: 1.05em;
     }
 
 
@@ -130,6 +154,11 @@ $open-nav-dim: 30px;
 
 .helm-docs {
   position: relative;
+  width: 100%;
+
+  .node-title h3 {
+    margin-top: 0;
+  }
 
 
   .node {
@@ -170,36 +199,36 @@ $open-nav-dim: 30px;
   // Sticky header for the docs
   // ----------------------------------
 
-  .page {
+  // .page {
 
-    // .l-main  {
-    //   padding-top: $menu-height;
-    // }
+  //   // .l-main  {
+  //   //   padding-top: $menu-height;
+  //   // }
 
-    $top-offset: 100px;
+  //   $top-offset: 100px;
 
-    // Backdrop
-    .mainHeader:before {
-      height: 104px;
-    }
+  //   // Backdrop
+  //   .mainHeader:before {
+  //     height: 104px;
+  //   }
 
-    .logoPosition {
-      margin-top: $top-offset + 28px;
-    }
+  //   .logoPosition {
+  //     margin-top: $top-offset + 28px;
+  //   }
 
-    .toggle-topbar {
-      margin-top: $top-offset + 10px;
-    }
+  //   .toggle-topbar {
+  //     margin-top: $top-offset + 10px;
+  //   }
 
-    .login-wrap {
-      margin-top: $top-offset + 44px;
-    }
+  //   .login-wrap {
+  //     margin-top: $top-offset + 44px;
+  //   }
 
-    .toggle-topbar,
-    .login-wrap {
-      right: $grid-gutter-width;
-    }
-  }
+  //   .toggle-topbar,
+  //   .login-wrap {
+  //     right: $grid-gutter-width;
+  //   }
+  // }
 
 
   // we have soidebar first (docs section)
@@ -208,6 +237,10 @@ $open-nav-dim: 30px;
       margin-left: -100%;
       max-width: none;
       width: 200%;
+    }
+
+    .col-right {
+      width: 50%;
     }
 
     .side-nav {
@@ -413,7 +446,7 @@ $open-nav-dim: 30px;
     .col-right {
       width: 100%;
       padding-left: 8%;
-      padding-right: 12%;
+      padding-right: 8%;
     }
   }
 
@@ -424,6 +457,12 @@ $open-nav-dim: 30px;
     .side-nav {
       width: 260px;
     }
+  }
+}
+
+@include respond($md-and-down) {
+  .container {
+    width: auto!important;
   }
 }
 
@@ -511,7 +550,7 @@ $open-nav-dim: 30px;
 
   .helm-docs-wrapper {
     .side-nav {
-      margin-left: -15px!important;
+      margin-left: -5px!important;
       width: 230px;
 
       // .navbar-horizontal & {
@@ -524,7 +563,8 @@ $open-nav-dim: 30px;
 
       // Hit the point, now we're fixed
       .docs-sidebar-scroll & {
-        top: 72px;
+        //top: 72px;
+        top: 20px;
       }
     }
   }

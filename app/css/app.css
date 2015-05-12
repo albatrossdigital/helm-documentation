@@ -1,10 +1,15 @@
+#header .logo {
+  margin-top: 3px; }
+#header h1 {
+  margin-top: 10px; }
+
 .helm-docs-wrapper .open-nav, .helm-docs-wrapper .side-nav {
   margin-top: 100px;
   position: absolute;
   top: -86px; }
   .docs-sidebar-scroll .helm-docs-wrapper .open-nav, .docs-sidebar-scroll .helm-docs-wrapper .side-nav {
     position: fixed;
-    top: 61px;
+    top: 40px;
     margin-top: 0;
     -webkit-transition: top ease 0.5s, margin-left ease 0.5s;
     -moz-transition: top ease 0.5s, margin-left ease 0.5s;
@@ -21,6 +26,8 @@
   -webkit-transition: all ease 0.2s;
   -moz-transition: all ease 0.2s;
   transition: all ease 0.2s; }
+  .open-nav:hover, .open-nav *:hover {
+    text-decoration: none; }
   .open-nav i {
     display: block !important;
     margin: 0 0 10px;
@@ -72,14 +79,12 @@
     display: block;
     max-width: 100%; }
   .side-nav .heading a {
-    text-transform: none !important; }
-  .side-nav .heading > a {
-    font-size: 1.1em !important; }
+    text-transform: none !important;
+    font-size: 0.8em; }
+  .side-nav li.active > a {
+    font-weight: bold; }
   .side-nav .child-menu {
     display: none; }
-  .side-nav .active-section > a, .side-nav .active-section a.active {
-    font-weight: normal;
-    font-size: 1.05em; }
   .side-nav .active-section > ul.child-menu {
     display: block; }
 
@@ -87,7 +92,10 @@
   padding-bottom: 400px; }
 
 .helm-docs {
-  position: relative; }
+  position: relative;
+  width: 100%; }
+  .helm-docs .node-title h3 {
+    margin-top: 0; }
   .helm-docs .node {
     margin-bottom: 20px; }
     .helm-docs .node .body * {
@@ -101,20 +109,12 @@
     position: static; }
 
 @media screen and (max-width: 767px) {
-  .page .mainHeader:before {
-    height: 104px; }
-  .page .logoPosition {
-    margin-top: 128px; }
-  .page .toggle-topbar {
-    margin-top: 110px; }
-  .page .login-wrap {
-    margin-top: 144px; }
-  .page .toggle-topbar, .page .login-wrap {
-    right: 30px; }
   .helm-docs-wrapper .helm-docs {
     margin-left: -100%;
     max-width: none;
     width: 200%; }
+  .helm-docs-wrapper .col-right {
+    width: 50%; }
   .helm-docs-wrapper .side-nav {
     width: 45%; }
   .helm-docs-wrapper.show-nav .helm-docs {
@@ -166,11 +166,15 @@
   .helm-docs-wrapper .col-right {
     width: 100%;
     padding-left: 8%;
-    padding-right: 12%; } }
+    padding-right: 8%; } }
 
 @media screen and (min-width: 768px) {
   .helm-docs-wrapper .side-nav {
     width: 260px; } }
+
+@media screen and (max-width: 1199px) {
+  .container {
+    width: auto !important; } }
 
 @media screen and (min-width: 992px) {
   .open-nav {
@@ -178,7 +182,7 @@
   .helm-docs .col-left {
     min-height: 10px; }
   .helm-docs-wrapper .side-nav {
-    margin-left: -15px !important;
+    margin-left: -5px !important;
     width: 230px; }
     .docs-sidebar-scroll .helm-docs-wrapper .side-nav {
-      top: 72px; } }
+      top: 20px; } }

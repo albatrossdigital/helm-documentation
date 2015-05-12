@@ -12,7 +12,7 @@ angular.module('scrollSpy', [])
 
       function maxHeight() {
         // change this for different headers / footers!
-        $nav.css({'max-height': ($window.innerHeight - (85 + 75 + 20)) + 'px'});
+        $nav.css({'max-height': ($window.innerHeight - (20)) + 'px'});
       }
 
       jQuery($window).on('resize', function () {

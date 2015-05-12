@@ -33,7 +33,7 @@ angular.module('app', [
 
       $rootScope.scrollToCurrent = function() {
         // This offset assumes a fixed header
-        $rootScope.scrollTo($stateParams.mlid + '/' + $stateParams.childmlid, 58);
+        $rootScope.scrollTo($stateParams.mlid + '/' + $stateParams.childmlid, -10);
       };
 		}
 	]

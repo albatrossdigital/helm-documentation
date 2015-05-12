@@ -7,8 +7,7 @@
      ng-if="node.node.body.value">
      
   <div class="node-title" ng-switch on="node.depth">
-    <h2 ng-switch-when="2">{{node.node.title}}</h2>
-    <h3 ng-switch-default>{{node.node.title}}</h3>
+    <h3>{{node.node.title}}</h3>
   </div>
   <div class="body" ng-bind-html="trustedBody(node)"></div>
 </div>

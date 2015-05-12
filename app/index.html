@@ -10,9 +10,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" ng-attr-content="{{metaDescription()}}" />
     <meta name="keywords" ng-attr-content="{{metaKeywords()}}" />
-    <title ng-bind="pageTitle();">FILLME!</title>
+    <title ng-bind="pageTitle();">Helm Documentation</title>
     <link rel="stylesheet" href="http://helmcivic.com/css/app.min.css">
     <!-- build:css css/libraries.min.css -->
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css">
+
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css css/app.min.css -->
@@ -42,13 +44,13 @@
   <body>
 
 
-<div class="container header">
+<div id="header" class="container header">
   <a href="/" class="logo"></a>
-  <h1><a href="/">Helm Civic</a></h1>
+  <h1 class="h2"><a href="/">Helm Civic</a> <small>Documentation</small></h1>
 </div>
 
 <div class="container header">
-  <h2>Documentation</h2>
+  
 </div>
 
 
@@ -66,12 +68,6 @@
 
     <!-- build:js js/bootstrap.min.js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-    <script src="bower_components/angular-bindonce/bindonce.js"></script>
-    <script src="bower_components/afkl-lazy-image/release/lazy-image.js"></script>
-    <script src="bower_components/angular-infinite-scroll/src/infinite-scroll.js"></script>
-    <script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
-    <script src="bower_components/foundation/js/foundation.js"></script>
     <!-- endbuild -->
     <!-- build:js js/libraries.min.js -->
     <!-- bower:js -->
